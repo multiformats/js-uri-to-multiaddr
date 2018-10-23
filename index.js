@@ -12,10 +12,7 @@ const Multiaddr = require('multiaddr')
 // [udp, foobar.com, 8080] => /dnsaddr/foobar.com/udp/8080
 
 function multiaddrFromUri (uriStr) {
-  const { protocol, hostname } = new url.URL(uriStr)
-  // WHATWG URL hides port when it's the default for the scheme...
-  const port = url.parse(uriStr).port
-  const scheme = protocol.slice(0, -1)
+  const { scheme, hostname, port } = parseUri(uriStr)
   const parts = [
     tupleForHostname(hostname),
     tupleForPort(port, scheme),
@@ -27,6 +24,15 @@ function multiaddrFromUri (uriStr) {
     .join('/')
 
   return Multiaddr(multiaddrStr)
+}
+
+function parseUri (uriStr) {
+  // Use the WHATWG URL global, in node >= 10 and the browser
+  const { protocol, hostname } = new URL(uriStr)
+  // WHATWG URL hides port when it's the default for the scheme...
+  const port = url.parse(uriStr).port
+  const scheme = protocol.slice(0, -1)
+  return { scheme, hostname, port }
 }
 
 function tupleForHostname (hostname) {
