@@ -9,7 +9,7 @@ const Multiaddr = require('multiaddr')
  *  https://foobar.com:8080 => /dns4/foobar.com/tcp/8080/https
  *          ws://foobar.com => /dns4/foobar.com/ws
  *   https://127.0.0.1:8080 => /ip4/127.0.0.1/tcp/8080/https
- *        http://[::0]:8080 => /ip6/127.0.0.1/tcp/8080/https
+ *        http://[::1]:8080 => /ip6/::1/tcp/8080/http
  *    tcp://foobar.com:8080 => /dns4/foobar.com/tcp/8080
  *    udp://foobar.com:8080 => /dns4/foobar.com/udp/8080
  */
