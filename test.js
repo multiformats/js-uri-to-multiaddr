@@ -11,20 +11,30 @@ test('should convert URIs to multiaddrs', (t) => {
     ['/ip6/::/tcp/0', 'tcp://[::]:0'],
     ['/ip4/0.0.7.6/udp/1234', 'udp://0.0.7.6:1234'],
     ['/ip6/::/udp/0', 'udp://[::]:0'],
-    ['/dnsaddr/protocol.ai/tcp/80', 'tcp://protocol.ai:80'],
-    ['/dnsaddr/protocol.ai/tcp/80/http', 'http://protocol.ai:80'],
-    ['/dnsaddr/protocol.ai/tcp/80/https', 'https://protocol.ai:80'],
-    ['/dnsaddr/ipfs.io/ws', 'ws://ipfs.io'],
-    ['/dnsaddr/ipfs.io/http', 'http://ipfs.io'],
-    ['/dnsaddr/ipfs.io/https', 'https://ipfs.io'],
+    ['/dns4/protocol.ai/tcp/80', 'tcp://protocol.ai:80'],
+    ['/dns4/protocol.ai/tcp/80/http', 'http://protocol.ai:80'],
+    ['/dns4/protocol.ai/tcp/80/https', 'https://protocol.ai:80'],
+    ['/dns4/ipfs.io/ws', 'ws://ipfs.io'],
+    ['/dns4/ipfs.io/http', 'http://ipfs.io'],
+    ['/dns4/ipfs.io/https', 'https://ipfs.io'],
     ['/ip4/1.2.3.4/tcp/3456/ws', 'ws://1.2.3.4:3456'],
     ['/ip6/::/tcp/0/ws', 'ws://[::]:0'],
-    ['/dnsaddr/ipfs.io/wss', 'wss://ipfs.io'],
+    ['/dns4/ipfs.io/wss', 'wss://ipfs.io'],
     ['/ip4/1.2.3.4/tcp/3456/wss', 'wss://1.2.3.4:3456'],
     ['/ip6/::/tcp/0/wss', 'wss://[::]:0']
   ]
 
   data.forEach(d => t.is(toMultiaddr(d[1]).toString(), d[0], `Converts ${d[1]} to ${d[0]}`))
+})
+
+test('should use the defaultDnsType where provided', (t) => {
+  const data = [
+    ['/dns4/protocol.ai/tcp/80', 'tcp://protocol.ai:80', { defaultDnsType: 'dns4' }],
+    ['/dns6/protocol.ai/tcp/80/http', 'http://protocol.ai:80', { defaultDnsType: 'dns6' }],
+    ['/dnsaddr/protocol.ai/tcp/80/https', 'https://protocol.ai:80', { defaultDnsType: 'dnsaddr' }]
+  ]
+
+  data.forEach(d => t.is(toMultiaddr(d[1], d[2]).toString(), d[0], `Converts ${d[1]} to ${d[0]} with opts ${d[2]}`))
 })
 
 test('should throw for unsupported protocol', (t) => {

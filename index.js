@@ -2,19 +2,24 @@ const url = require('url')
 const isIp = require('is-ip')
 const Multiaddr = require('multiaddr')
 
-// Convert a URI to a multiaddr
-//
-// [https, foobar.com] => /dnsaddr/foobar.com/https
-// [https, foobar.com, 8080] => /dnsaddr/foobar.com/tcp/8080/https
-// [ws, foobar.com] => /dnsaddr/foobar.com/ws
-// [https, 127.0.0.1, 8080] => /ip4/127.0.0.1/tcp/8080/https
-// [tcp, foobar.com, 8080] => /dnsaddr/foobar.com/tcp/8080
-// [udp, foobar.com, 8080] => /dnsaddr/foobar.com/udp/8080
+/**
+ * Convert a URI to a multiaddr
+ *
+ *        http://foobar.com => /dns4/foobar.com/https
+ *  https://foobar.com:8080 => /dns4/foobar.com/tcp/8080/https
+ *          ws://foobar.com => /dns4/foobar.com/ws
+ *   https://127.0.0.1:8080 => /ip4/127.0.0.1/tcp/8080/https
+ *        http://[::1]:8080 => /ip6/::1/tcp/8080/http
+ *    tcp://foobar.com:8080 => /dns4/foobar.com/tcp/8080
+ *    udp://foobar.com:8080 => /dns4/foobar.com/udp/8080
+ */
 
-function multiaddrFromUri (uriStr) {
+function multiaddrFromUri (uriStr, opts) {
+  opts = opts || {}
+  const defaultDnsType = opts.defaultDnsType || 'dns4'
   const { scheme, hostname, port } = parseUri(uriStr)
   const parts = [
-    tupleForHostname(hostname),
+    tupleForHostname(hostname, defaultDnsType),
     tupleForPort(port, scheme),
     tupleForScheme(scheme)
   ]
@@ -35,7 +40,7 @@ function parseUri (uriStr) {
   return { scheme, hostname, port }
 }
 
-function tupleForHostname (hostname) {
+function tupleForHostname (hostname, defaultDnsType) {
   if (!hostname) throw new Error('hostname is requried')
   if (isIp.v4(hostname)) {
     return ['ip4', hostname]
@@ -51,8 +56,8 @@ function tupleForHostname (hostname) {
       return ['ip6', trimmed]
     }
   }
-  // assumes that any non-ip hostname is a dns address.
-  return ['dnsaddr', hostname]
+  // assumes that any non-ip hostname is a dns4 address.
+  return [defaultDnsType, hostname]
 }
 
 function tupleForPort (port, scheme) {
