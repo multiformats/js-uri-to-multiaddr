@@ -15,6 +15,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "lint": "standard",
     "test": "ava test.js"
   },
   "author": "olizilla",
