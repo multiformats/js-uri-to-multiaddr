@@ -1,15 +1,14 @@
-const url = require('url')
 const isIp = require('is-ip')
 const Multiaddr = require('multiaddr')
 
 /**
  * Convert a URI to a multiaddr
  *
- *        http://foobar.com => /dns4/foobar.com/https
- *  https://foobar.com:8080 => /dns4/foobar.com/tcp/8080/https
- *          ws://foobar.com => /dns4/foobar.com/ws
- *   https://127.0.0.1:8080 => /ip4/127.0.0.1/tcp/8080/https
- *        http://[::1]:8080 => /ip6/::1/tcp/8080/http
+ *        http://foobar.com => /dns4/foobar.com/tcp/80/http
+ *       https://foobar.com => /dns4/foobar.com/tcp/443/tls/http
+ *  https://foobar.com:5001 => /dns4/foobar.com/tcp/5001/tls/http
+ *   https://127.0.0.1:8080 => /ip4/127.0.0.1/tcp/8080/tls/http
+ *        http://[::0]:8080 => /ip6/::0/tcp/8080/http
  *    tcp://foobar.com:8080 => /dns4/foobar.com/tcp/8080
  *    udp://foobar.com:8080 => /dns4/foobar.com/udp/8080
  */
@@ -33,15 +32,16 @@ function multiaddrFromUri (uriStr, opts) {
 
 function parseUri (uriStr) {
   // Use the WHATWG URL global, in node >= 10 and the browser
-  const { protocol, hostname } = new URL(uriStr)
-  // WHATWG URL hides port when it's the default for the scheme...
-  const port = url.parse(uriStr).port
+  let { protocol, hostname, port } = new URL(uriStr)
   const scheme = protocol.slice(0, -1)
+  if (!port && port !== 0) {
+    port = portForProtocol(scheme)
+  }
   return { scheme, hostname, port }
 }
 
 function tupleForHostname (hostname, defaultDnsType) {
-  if (!hostname) throw new Error('hostname is requried')
+  if (!hostname) return null
   if (isIp.v4(hostname)) {
     return ['ip4', hostname]
   }
@@ -69,10 +69,21 @@ function tupleForPort (port, scheme) {
 }
 
 function tupleForScheme (scheme) {
-  if (scheme.match(/^https?$|^wss?$/)) {
-    return [scheme]
+  if (scheme.match(/^tcp$|^udp$/)) {
+    return null
   }
-  return null
+  return [scheme]
+}
+
+function portForProtocol (protocol) {
+  if (!protocol) return null
+  const portFor = {
+    http: '80',
+    https: '443',
+    ws: '80',
+    wss: '443'
+  }
+  return portFor[protocol]
 }
 
 module.exports = multiaddrFromUri
