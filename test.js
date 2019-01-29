@@ -50,7 +50,7 @@ test('should throw for on invalid url', (t) => {
 
 test('should throw for unknown protocol', (t) => {
   t.throws(() => {
-    // NOTE: `data` is a valid uri protocl but isn't a valid multiaddr protocol yet
+    // NOTE: `data` is a valid uri protocol but isn't a valid multiaddr protocol yet
     toMultiaddr('data:image/svg+xml;base64,test')
   }, 'no protocol with name: data')
 })

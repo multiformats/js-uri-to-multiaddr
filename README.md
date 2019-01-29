@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tableflip/uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/tableflip/uri-to-multiaddr) [![dependencies Status](https://david-dm.org/tableflip/uri-to-multiaddr/status.svg)](https://david-dm.org/tableflip/uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://protocol.ai -> /dns4/protocol.ai/tcp/80/https
+> Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://protocol.ai -> /dns4/protocol.ai/tcp/443/https
 
 ## Install
 
