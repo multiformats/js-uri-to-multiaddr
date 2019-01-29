@@ -4,11 +4,11 @@
   "description": "[![Build Status](https://travis-ci.org/tableflip/uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/tableflip/uri-to-multiaddr) [![dependencies Status](https://david-dm.org/tableflip/uri-to-multiaddr/status.svg)](https://david-dm.org/tableflip/uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)",
   "main": "index.js",
   "dependencies": {
-    "ava": "^0.25.0",
     "is-ip": "^2.0.0",
     "multiaddr": "^6.0.3"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
     "standard": "^12.0.1"
   },
   "engines": {
