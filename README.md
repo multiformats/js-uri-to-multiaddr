@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tableflip/uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/tableflip/uri-to-multiaddr) [![dependencies Status](https://david-dm.org/tableflip/uri-to-multiaddr/status.svg)](https://david-dm.org/tableflip/uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://protocol.ai -> /dns4/protocol.ai/https
+> Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://protocol.ai -> /dns4/protocol.ai/tcp/443/https
 
 ## Install
 
@@ -16,7 +16,7 @@ npm install uri-to-multiaddr
 const toMultiaddr = require('uri-to-multiaddr')
 
 console.log(toMultiaddr('https://protocol.ai'))
-// -> /dns4/protocol.ai/https
+// -> /dns4/protocol.ai/tcp/443/https
 ```
 
 Domain names can represent one of
@@ -32,15 +32,15 @@ in an options object as the second parameter to override it:
 ```js
 const toMultiaddr = require('uri-to-multiaddr')
 
-console.log(toMultiaddr('https://protocol.ai'), {defaultDnsType: 'dnsaddr'})
-// -> /dnsaddr/protocol.ai/https
+console.log(toMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
+// -> /dns6/protocol.ai/tcp/443/https
 ```
 
 See [test.js](./test.js) for the currently supported conversions.
 
 **Note**: `uri-to-multiaddr` will throw if the passed URI:
   - is not a valid, according the WHATWG URL spec implementation used.
-  - is not supported yet e.g. quic
+  - is not supported yet
 
 ## Related
 
