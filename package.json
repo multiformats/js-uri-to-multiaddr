@@ -1,6 +1,6 @@
 {
   "name": "uri-to-multiaddr",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "[![Build Status](https://travis-ci.org/tableflip/uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/tableflip/uri-to-multiaddr) [![dependencies Status](https://david-dm.org/tableflip/uri-to-multiaddr/status.svg)](https://david-dm.org/tableflip/uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)",
   "main": "index.js",
   "dependencies": {
