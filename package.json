@@ -1,7 +1,7 @@
 {
   "name": "uri-to-multiaddr",
   "version": "3.0.1",
-  "description": "Convert a URI to a Multiaddr: https://protocol.ai -> /dns4/protocol.ai/tcp/443/https",
+  "description": "Convert a URI to a Multiaddr: https://multiformats.io -> /dns4/multiformats.io/tcp/443/https",
   "main": "index.js",
   "dependencies": {
     "is-ip": "^3.1.0",
