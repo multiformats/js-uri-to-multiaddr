@@ -1,6 +1,6 @@
 {
   "name": "uri-to-multiaddr",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Convert a URI to a Multiaddr: https://multiformats.io -> /dns4/multiformats.io/tcp/443/https",
   "main": "index.js",
   "dependencies": {
