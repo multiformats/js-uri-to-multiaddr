@@ -45,12 +45,12 @@ test('should use the defaultDnsType where provided', (t) => {
 test('should throw for on invalid url', (t) => {
   t.throws(() => {
     toMultiaddr('whoosh.fast')
-  }, /Invalid URL/)
+  }, { message: /Invalid URL/ })
 })
 
 test('should throw for unknown protocol', (t) => {
   t.throws(() => {
     // NOTE: `data` is a valid uri protocol but isn't a valid multiaddr protocol yet
     toMultiaddr('data:image/svg+xml;base64,test')
-  }, 'no protocol with name: data')
+  }, { message: 'no protocol with name: data' })
 })
