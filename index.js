@@ -1,5 +1,5 @@
 const isIp = require('is-ip')
-const Multiaddr = require('multiaddr')
+const { Multiaddr } = require('multiaddr')
 
 /**
  * Convert a URI to a multiaddr
@@ -27,7 +27,7 @@ function multiaddrFromUri (uriStr, opts) {
     .reduce((a, b) => a.concat(b))
     .join('/')
 
-  return Multiaddr(multiaddrStr)
+  return new Multiaddr(multiaddrStr)
 }
 
 function parseUri (uriStr) {
