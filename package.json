@@ -5,11 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "is-ip": "^3.1.0",
-    "multiaddr": "^8.0.0"
+    "multiaddr": "^9.0.1"
   },
   "devDependencies": {
     "ava": "^3.11.1",
-    "standard": "^14.3.1"
+    "standard": "^16.0.3"
   },
   "engines": {
     "node": ">=10"
