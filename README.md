@@ -1,6 +1,6 @@
 # uri-to-multiaddr
 
-[![Build Status](https://travis-ci.org/multiformats/js-uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/multiformats/js-uri-to-multiaddr) [![dependencies Status](https://david-dm.org/multiformats/js-uri-to-multiaddr/status.svg)](https://david-dm.org/multiformats/js-uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/multiformats/js-uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/multiformats/js-uri-to-multiaddr) [![dependencies Status](https://status.david-dm.org/gh/multiformats/js-uri-to-multiaddr.svg)](https://david-dm.org/multiformats/js-uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://multiformats.io -> /dns4/multiformats.io/tcp/443/https
 
