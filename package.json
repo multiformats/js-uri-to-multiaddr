@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "is-ip": "^3.1.0",
-    "multiaddr": "^9.0.1"
+    "multiaddr": "^10.0.0"
   },
   "devDependencies": {
     "ava": "^3.11.1",
