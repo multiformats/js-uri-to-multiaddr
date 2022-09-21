@@ -1,13 +1,24 @@
-# uri-to-multiaddr
+# @multiformats/uri-to-multiaddr <!-- omit in toc -->
 
-[![Build Status](https://travis-ci.org/multiformats/js-uri-to-multiaddr.svg?branch=master)](https://travis-ci.org/multiformats/js-uri-to-multiaddr) [![dependencies Status](https://status.david-dm.org/gh/multiformats/js-uri-to-multiaddr.svg)](https://david-dm.org/multiformats/js-uri-to-multiaddr) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![multiformats.io](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://multiformats.io)
+[![codecov](https://img.shields.io/codecov/c/github/multiformats/js-uri-to-multiaddr.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-uri-to-multiaddr)
+[![CI](https://img.shields.io/github/workflow/status/multiformats/js-uri-to-multiaddr/test%20&%20maybe%20release/master?style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml)
 
-> Convert a URI to a [Multiaddr](https://multiformats.io/multiaddr/): https://multiformats.io -> /dns4/multiformats.io/tcp/443/https
+> Convert a URI to a Multiaddr: <https://multiformats.io> -> /dns4/multiformats.io/tcp/443/https
+
+## Table of contents <!-- omit in toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+- [Related](#related)
+- [Contribute](#contribute)
+- [License](#license)
+- [Contribute](#contribute-1)
 
 ## Install
 
-```sh
-npm install uri-to-multiaddr
+```console
+$ npm i @multiformats/uri-to-multiaddr
 ```
 
 ## Usage
@@ -39,8 +50,9 @@ console.log(toMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
 See [test.js](./test.js) for the currently supported conversions.
 
 **Note**: `uri-to-multiaddr` will throw if the passed URI:
-  - is not a valid, according the WHATWG URL spec implementation used.
-  - is not supported yet
+
+- is not a valid, according the WHATWG URL spec implementation used.
+- is not supported yet
 
 ## Related
 
@@ -52,4 +64,11 @@ Feel free to dive in! [Open an issue](https://github.com/multiformats/js-uri-to-
 
 ## License
 
-[MIT](LICENSE) © TABLEFLIP
+Licensed under either of
+
+- Apache 2.0, ([LICENSE-APACHE](LICENSE-APACHE) / <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT ([LICENSE-MIT](LICENSE-MIT) / <http://opensource.org/licenses/MIT>)
+
+## Contribute
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
