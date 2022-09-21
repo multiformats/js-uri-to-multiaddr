@@ -53,7 +53,7 @@ describe('uri-to-multiaddr', () => {
   it('should throw for on invalid url', () => {
     expect(() => {
       toMultiaddr('whoosh.fast')
-    }).to.throw(/Invalid URL/)
+    }).to.throw(/URL/)
   })
 
   it('should throw for unknown protocol', () => {
