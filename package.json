@@ -1,6 +1,6 @@
 {
   "name": "@multiformats/uri-to-multiaddr",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Convert a URI to a Multiaddr: https://multiformats.io -> /dns4/multiformats.io/tcp/443/https",
   "author": "olizilla",
   "license": "Apache-2.0 OR MIT",
