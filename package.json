@@ -141,6 +141,6 @@
     "is-ip": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^37.5.3"
+    "aegir": "^38.1.7"
   }
 }
