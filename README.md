@@ -2,7 +2,7 @@
 
 [![multiformats.io](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://multiformats.io)
 [![codecov](https://img.shields.io/codecov/c/github/multiformats/js-uri-to-multiaddr.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-uri-to-multiaddr)
-[![CI](https://img.shields.io/github/actions/workflow/status/multiformats/js-uri-to-multiaddr/js-test-and-release.yml?branch=master\&style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml?query=branch%3Amaster)
+[![CI](https://img.shields.io/github/actions/workflow/status/multiformats/js-uri-to-multiaddr/js-test-and-release.yml?branch=main\&style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml?query=branch%3Amain)
 
 > Convert a URI to a Multiaddr
 
