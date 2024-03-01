@@ -1,7 +1,7 @@
 {
   "name": "@multiformats/uri-to-multiaddr",
   "version": "7.0.0",
-  "description": "Convert a URI to a Multiaddr: https://multiformats.io -> /dns4/multiformats.io/tcp/443/https",
+  "description": "Convert a URI to a Multiaddr",
   "author": "olizilla",
   "license": "Apache-2.0 OR MIT",
   "homepage": "https://github.com/multiformats/js-uri-to-multiaddr#readme",
@@ -125,7 +125,9 @@
   "scripts": {
     "clean": "aegir clean",
     "lint": "aegir lint",
+    "docs": "aegir docs",
     "dep-check": "aegir dep-check",
+    "doc-check": "aegir doc-check",
     "generate": "protons src/pb/peer.proto src/pb/tags.proto",
     "build": "aegir build",
     "test": "aegir test",

@@ -4,34 +4,24 @@
 [![codecov](https://img.shields.io/codecov/c/github/multiformats/js-uri-to-multiaddr.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-uri-to-multiaddr)
 [![CI](https://img.shields.io/github/actions/workflow/status/multiformats/js-uri-to-multiaddr/js-test-and-release.yml?branch=master\&style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml?query=branch%3Amaster)
 
-> Convert a URI to a Multiaddr: <https://multiformats.io> -> /dns4/multiformats.io/tcp/443/https
+> Convert a URI to a Multiaddr
 
-# Install
+# About
 
-```console
-$ npm i @multiformats/uri-to-multiaddr
-```
+<!--
 
-## Browser `<script>` tag
+!IMPORTANT!
 
-Loading this module through a script tag will make it's exports available as `MultiformatsUriToMultiaddr` in the global namespace.
+Everything in this README between "# About" and "# Install" is automatically
+generated and will be overwritten the next time the doc generator is run.
 
-```html
-<script src="https://unpkg.com/@multiformats/uri-to-multiaddr/dist/index.min.js"></script>
-```
+To make changes to this section, please update the @packageDocumentation section
+of src/index.js or src/index.ts
 
-> Convert a URI to a Multiaddr: <https://multiformats.io> -> /dns4/multiformats.io/tcp/443/https
+To experiment with formatting, please run "npm run docs" from the root of this
+repo and examine the changes made.
 
-## Table of contents <!-- omit in toc -->
-
-- [Install](#install)
-- [Usage](#usage)
-- [Related](#related)
-- [Contribute](#contribute)
-- [License](#license)
-- [Contribute](#contribute-1)
-
-## Usage
+-->
 
 ```js
 const toMultiaddr = require('uri-to-multiaddr')
@@ -67,6 +57,24 @@ See [test.js](./test.js) for the currently supported conversions.
 ## Related
 
 - [multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
+
+# Install
+
+```console
+$ npm i @multiformats/uri-to-multiaddr
+```
+
+## Browser `<script>` tag
+
+Loading this module through a script tag will make it's exports available as `MultiformatsUriToMultiaddr` in the global namespace.
+
+```html
+<script src="https://unpkg.com/@multiformats/uri-to-multiaddr/dist/index.min.js"></script>
+```
+
+# API Docs
+
+- <https://multiformats.github.io/js-uri-to-multiaddr>
 
 # License
 

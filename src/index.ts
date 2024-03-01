@@ -1,3 +1,42 @@
+/**
+ * @packageDocumentation
+ *
+ * ```js
+ * const toMultiaddr = require('uri-to-multiaddr')
+ *
+ * console.log(toMultiaddr('https://protocol.ai'))
+ * // -> /dns4/protocol.ai/tcp/443/https
+ * ```
+ *
+ * Domain names can represent one of
+ *
+ * - `/dns4` - domain resolves to an ipv4 address (**default**)
+ * - `/dns6` - domain resolves to an ipv6 address
+ * - `/dnsaddr` - domain has a [DNSLink](https://docs.ipfs.io/guides/concepts/dnslink/) TXT record pointing to an IPFS CID
+ *
+ * This library assumes `/dns4` when it finds a domain name in the input string.
+ * It makes no attempt query DNS. To override the default assumption, you can pass
+ * in an options object as the second parameter to override it:
+ *
+ * ```js
+ * const toMultiaddr = require('uri-to-multiaddr')
+ *
+ * console.log(toMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
+ * // -> /dns6/protocol.ai/tcp/443/https
+ * ```
+ *
+ * See [test.js](./test.js) for the currently supported conversions.
+ *
+ * **Note**: `uri-to-multiaddr` will throw if the passed URI:
+ *
+ * - is not a valid, according the WHATWG URL spec implementation used.
+ * - is not supported yet
+ *
+ * ## Related
+ *
+ * - [multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
+ */
+
 import { multiaddr } from '@multiformats/multiaddr'
 import { isIPv4, isIPv6 } from 'is-ip'
 import type { Multiaddr } from '@multiformats/multiaddr'
