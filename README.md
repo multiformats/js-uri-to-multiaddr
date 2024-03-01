@@ -23,10 +23,10 @@ repo and examine the changes made.
 
 -->
 
-```js
-const toMultiaddr = require('uri-to-multiaddr')
+```typescript
+import { uriToMultiaddr } from '@multiformats/uri-to-multiaddr'
 
-console.log(toMultiaddr('https://protocol.ai'))
+console.log(uriToMultiaddr('https://protocol.ai'))
 // -> /dns4/protocol.ai/tcp/443/https
 ```
 
@@ -40,10 +40,10 @@ This library assumes `/dns4` when it finds a domain name in the input string.
 It makes no attempt query DNS. To override the default assumption, you can pass
 in an options object as the second parameter to override it:
 
-```js
-const toMultiaddr = require('uri-to-multiaddr')
+```typescript
+import { uriToMultiaddr } from '@multiformats/uri-to-multiaddr'
 
-console.log(toMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
+console.log(uriToMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
 // -> /dns6/protocol.ai/tcp/443/https
 ```
 
@@ -56,7 +56,7 @@ See [test.js](./test.js) for the currently supported conversions.
 
 ## Related
 
-- [multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
+- [@multiformats/multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
 
 # Install
 

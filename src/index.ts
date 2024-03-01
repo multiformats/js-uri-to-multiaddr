@@ -1,10 +1,10 @@
 /**
  * @packageDocumentation
  *
- * ```js
- * const toMultiaddr = require('uri-to-multiaddr')
+ * ```typescript
+ * import { uriToMultiaddr } from '@multiformats/uri-to-multiaddr'
  *
- * console.log(toMultiaddr('https://protocol.ai'))
+ * console.log(uriToMultiaddr('https://protocol.ai'))
  * // -> /dns4/protocol.ai/tcp/443/https
  * ```
  *
@@ -18,10 +18,10 @@
  * It makes no attempt query DNS. To override the default assumption, you can pass
  * in an options object as the second parameter to override it:
  *
- * ```js
- * const toMultiaddr = require('uri-to-multiaddr')
+ * ```typescript
+ * import { uriToMultiaddr } from '@multiformats/uri-to-multiaddr'
  *
- * console.log(toMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
+ * console.log(uriToMultiaddr('https://protocol.ai'), { defaultDnsType: 'dns6' })
  * // -> /dns6/protocol.ai/tcp/443/https
  * ```
  *
@@ -34,7 +34,7 @@
  *
  * ## Related
  *
- * - [multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
+ * - [@multiformats/multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
  */
 
 import { multiaddr } from '@multiformats/multiaddr'
@@ -66,7 +66,7 @@ export interface MultiaddrFromUriOpts {
  * udp://foobar.com:8080 => /dns4/foobar.com/udp/8080
  */
 
-export default function multiaddrFromUri (uriStr: string, opts?: MultiaddrFromUriOpts): Multiaddr {
+export function uriToMultiaddr (uriStr: string, opts?: MultiaddrFromUriOpts): Multiaddr {
   opts = opts ?? {}
   const defaultDnsType = opts.defaultDnsType ?? 'dns4'
   const { scheme, hostname, port } = parseUri(uriStr)
