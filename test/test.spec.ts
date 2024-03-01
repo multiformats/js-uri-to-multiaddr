@@ -1,5 +1,5 @@
 import { expect } from 'aegir/chai'
-import toMultiaddr from '../src/index.js'
+import { uriToMultiaddr } from '../src/index.js'
 import type { MultiaddrFromUriOpts } from '../src/index.js'
 
 describe('uri-to-multiaddr', () => {
@@ -33,7 +33,7 @@ describe('uri-to-multiaddr', () => {
     data.forEach(d => {
       const input = d[1]
       const expected = d[0]
-      const output = toMultiaddr(input).toString()
+      const output = uriToMultiaddr(input).toString()
       expect(output).to.equal(expected, `Converts ${input} to ${expected}`)
     })
   })
@@ -46,20 +46,20 @@ describe('uri-to-multiaddr', () => {
     ]
 
     data.forEach(d => {
-      expect(toMultiaddr(d[1], d[2]).toString()).to.equal(d[0], `Converts ${d[1]} to ${d[0]} with opts ${JSON.stringify(d[2])}`)
+      expect(uriToMultiaddr(d[1], d[2]).toString()).to.equal(d[0], `Converts ${d[1]} to ${d[0]} with opts ${JSON.stringify(d[2])}`)
     })
   })
 
   it('should throw for on invalid url', () => {
     expect(() => {
-      toMultiaddr('whoosh.fast')
+      uriToMultiaddr('whoosh.fast')
     }).to.throw(/URL/)
   })
 
   it('should throw for unknown protocol', () => {
     expect(() => {
       // NOTE: `data` is a valid uri protocol but isn't a valid multiaddr protocol yet
-      toMultiaddr('data:image/svg+xml;base64,test')
+      uriToMultiaddr('data:image/svg+xml;base64,test')
     }).to.throw('no protocol with name: data')
   })
 })
