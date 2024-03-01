@@ -1,5 +1,5 @@
-import { isIPv4, isIPv6 } from 'is-ip'
 import { multiaddr } from '@multiformats/multiaddr'
+import { isIPv4, isIPv6 } from 'is-ip'
 import type { Multiaddr } from '@multiformats/multiaddr'
 
 const portFor: Record<string, string> = {

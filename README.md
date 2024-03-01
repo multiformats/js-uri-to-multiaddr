@@ -1,8 +1,24 @@
-# @multiformats/uri-to-multiaddr <!-- omit in toc -->
+# @multiformats/uri-to-multiaddr
 
 [![multiformats.io](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://multiformats.io)
 [![codecov](https://img.shields.io/codecov/c/github/multiformats/js-uri-to-multiaddr.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-uri-to-multiaddr)
-[![CI](https://img.shields.io/github/workflow/status/multiformats/js-uri-to-multiaddr/test%20&%20maybe%20release/master?style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/multiformats/js-uri-to-multiaddr/js-test-and-release.yml?branch=master\&style=flat-square)](https://github.com/multiformats/js-uri-to-multiaddr/actions/workflows/js-test-and-release.yml?query=branch%3Amaster)
+
+> Convert a URI to a Multiaddr: <https://multiformats.io> -> /dns4/multiformats.io/tcp/443/https
+
+# Install
+
+```console
+$ npm i @multiformats/uri-to-multiaddr
+```
+
+## Browser `<script>` tag
+
+Loading this module through a script tag will make it's exports available as `MultiformatsUriToMultiaddr` in the global namespace.
+
+```html
+<script src="https://unpkg.com/@multiformats/uri-to-multiaddr/dist/index.min.js"></script>
+```
 
 > Convert a URI to a Multiaddr: <https://multiformats.io> -> /dns4/multiformats.io/tcp/443/https
 
@@ -14,12 +30,6 @@
 - [Contribute](#contribute)
 - [License](#license)
 - [Contribute](#contribute-1)
-
-## Install
-
-```console
-$ npm i @multiformats/uri-to-multiaddr
-```
 
 ## Usage
 
@@ -58,17 +68,13 @@ See [test.js](./test.js) for the currently supported conversions.
 
 - [multiaddr-to-uri](https://github.com/multiformats/js-multiaddr-to-uri) - convert it back again
 
-## Contribute
-
-Feel free to dive in! [Open an issue](https://github.com/multiformats/js-uri-to-multiaddr/issues/new) or submit PRs.
-
-## License
+# License
 
 Licensed under either of
 
 - Apache 2.0, ([LICENSE-APACHE](LICENSE-APACHE) / <http://www.apache.org/licenses/LICENSE-2.0>)
 - MIT ([LICENSE-MIT](LICENSE-MIT) / <http://opensource.org/licenses/MIT>)
 
-## Contribute
+# Contribution
 
 Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
