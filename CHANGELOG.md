@@ -1,3 +1,14 @@
+## [8.0.0](https://github.com/multiformats/js-uri-to-multiaddr/compare/v7.0.1...v8.0.0) (2024-03-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* the default export has been replaced with a named export of `uriToMultiaddr`
+
+### Features
+
+* switch to named export ([#45](https://github.com/multiformats/js-uri-to-multiaddr/issues/45)) ([74c24d1](https://github.com/multiformats/js-uri-to-multiaddr/commit/74c24d185480936e57e93072cd92cc7ae8722268))
+
 ## [7.0.1](https://github.com/multiformats/js-uri-to-multiaddr/compare/v7.0.0...v7.0.1) (2024-03-01)
 
 
