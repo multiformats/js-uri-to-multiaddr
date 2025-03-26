@@ -1,3 +1,9 @@
+## [8.1.0](https://github.com/multiformats/js-uri-to-multiaddr/compare/v8.0.1...v8.1.0) (2025-03-26)
+
+### Features
+
+* support http-path in multiaddrs ([#53](https://github.com/multiformats/js-uri-to-multiaddr/issues/53)) ([237abb0](https://github.com/multiformats/js-uri-to-multiaddr/commit/237abb07edf05e000056ae2d60bbce333326c8a8)), closes [#47](https://github.com/multiformats/js-uri-to-multiaddr/issues/47)
+
 ## [8.0.1](https://github.com/multiformats/js-uri-to-multiaddr/compare/v8.0.0...v8.0.1) (2025-03-26)
 
 ### Dependencies
