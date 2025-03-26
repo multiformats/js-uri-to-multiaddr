@@ -181,6 +181,14 @@ function tupleForScheme (scheme: string): [string] | undefined {
     return undefined
   }
 
+  if (scheme === 'https') {
+    return ['/tls/http']
+  }
+
+  if (scheme === 'wss') {
+    return ['/tls/ws']
+  }
+
   return [scheme]
 }
 
