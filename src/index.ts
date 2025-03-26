@@ -69,12 +69,16 @@ export interface MultiaddrFromUriOpts {
 export function uriToMultiaddr (uriStr: string, opts?: MultiaddrFromUriOpts): Multiaddr {
   opts = opts ?? {}
   const defaultDnsType = opts.defaultDnsType ?? 'dns4'
-  const { scheme, hostname, port } = parseUri(uriStr)
+  const { scheme, hostname, port, path } = parseUri(uriStr)
   const parts = [
     tupleForHostname(hostname, defaultDnsType),
     tupleForPort(port, scheme),
     tupleForScheme(scheme)
   ]
+
+  if (path != null) {
+    parts.push(tupleForPath(path))
+  }
 
   const multiaddrStr = '/' + parts
     .filter(x => Boolean(x))
@@ -85,7 +89,7 @@ export function uriToMultiaddr (uriStr: string, opts?: MultiaddrFromUriOpts): Mu
   return multiaddr(multiaddrStr)
 }
 
-function parseUri (uriStr: string): { scheme: string, hostname: string, port: string } {
+function parseUri (uriStr: string): { scheme: string, hostname: string, port: string, path?: string } {
   const [scheme] = uriStr.split(':')
 
   // browsers will only parse URLs with schemes they understand
@@ -94,7 +98,7 @@ function parseUri (uriStr: string): { scheme: string, hostname: string, port: st
   }
 
   // Use the WHATWG URL global, in node >= 10 and the browser
-  let { protocol, hostname, port } = new URL(uriStr)
+  let { protocol, hostname, port, pathname, search } = new URL(uriStr)
 
   if (port == null || port === '') {
     const protocolPort = portForProtocol(scheme)
@@ -110,7 +114,22 @@ function parseUri (uriStr: string): { scheme: string, hostname: string, port: st
     }
   }
 
-  return { scheme, hostname, port }
+  let path: string | undefined
+
+  if (pathname != null && pathname !== '' && pathname !== '/') {
+    if (pathname.startsWith('/')) {
+      pathname = pathname.substring(1)
+    }
+
+    path = pathname
+  }
+
+  if (search != null && search !== '') {
+    path = path ?? ''
+    path += search
+  }
+
+  return { scheme, hostname, port, path }
 }
 
 function tupleForHostname (hostname: string, defaultDnsType: string): [string, string] | undefined {
@@ -156,6 +175,14 @@ function tupleForScheme (scheme: string): [string] | undefined {
   }
 
   return [scheme]
+}
+
+function tupleForPath (path: string): [string, string] | undefined {
+  if (path == null || path === '') {
+    return undefined
+  }
+
+  return ['http-path', encodeURIComponent(path)]
 }
 
 function portForProtocol (protocol: string): string | undefined {
