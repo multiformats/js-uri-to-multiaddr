@@ -1,3 +1,13 @@
+## [9.0.0](https://github.com/multiformats/js-uri-to-multiaddr/compare/v8.1.0...v9.0.0) (2025-03-26)
+
+### ⚠ BREAKING CHANGES
+
+* returned multiaddrs created from domain names used to start with `/dns4`, now they start with `/dns` - pass `defaultDnsType: 'dns4'` to restore the previous behaviour
+
+### Bug Fixes
+
+* prefer /dns to allow resolving A or AAAA records ([#55](https://github.com/multiformats/js-uri-to-multiaddr/issues/55)) ([4fbd126](https://github.com/multiformats/js-uri-to-multiaddr/commit/4fbd1260be528141a4a18d7966b34840ea348fc7)), closes [#8](https://github.com/multiformats/js-uri-to-multiaddr/issues/8)
+
 ## [8.1.0](https://github.com/multiformats/js-uri-to-multiaddr/compare/v8.0.1...v8.1.0) (2025-03-26)
 
 ### Features
