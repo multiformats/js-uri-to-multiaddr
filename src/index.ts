@@ -51,24 +51,31 @@ const portFor: Record<string, string> = {
 const BROWSER_SCHEMES = ['http', 'https', 'ws', 'wss']
 
 export interface MultiaddrFromUriOpts {
-  defaultDnsType?: string
+  /**
+   * If a URI contains a domain name, by default the `/dns/` tuple will be used
+   * to define it. If you wish to use `/dnsaddr` or something more specific like
+   * `/dns4` or `/dns6`, pass it as an option here.
+   *
+   * @default 'dns'
+   */
+  defaultDnsType?: 'dns' | 'dns4' | 'dns6' | 'dnsaddr'
 }
 
 /**
  * Convert a URI to a multiaddr
  *
- * http://foobar.com => /dns4/foobar.com/tcp/80/http
- * https://foobar.com => /dns4/foobar.com/tcp/443/https
- * https://foobar.com:5001 => /dns4/foobar.com/tcp/5001/https
+ * http://foobar.com => /dns/foobar.com/tcp/80/http
+ * https://foobar.com => /dns/foobar.com/tcp/443/https
+ * https://foobar.com:5001 => /dns/foobar.com/tcp/5001/https
  * https://127.0.0.1:8080 => /ip4/127.0.0.1/tcp/8080/https
  * http://[::1]:8080 => /ip6/::1/tcp/8080/http
- * tcp://foobar.com:8080 => /dns4/foobar.com/tcp/8080
- * udp://foobar.com:8080 => /dns4/foobar.com/udp/8080
+ * tcp://foobar.com:8080 => /dns/foobar.com/tcp/8080
+ * udp://foobar.com:8080 => /dns/foobar.com/udp/8080
  */
 
 export function uriToMultiaddr (uriStr: string, opts?: MultiaddrFromUriOpts): Multiaddr {
   opts = opts ?? {}
-  const defaultDnsType = opts.defaultDnsType ?? 'dns4'
+  const defaultDnsType = opts.defaultDnsType ?? 'dns'
   const { scheme, hostname, port, path } = parseUri(uriStr)
   const parts = [
     tupleForHostname(hostname, defaultDnsType),

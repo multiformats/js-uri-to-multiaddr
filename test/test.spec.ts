@@ -4,7 +4,7 @@ import type { MultiaddrFromUriOpts } from '../src/index.js'
 
 describe('uri-to-multiaddr', () => {
   it('should convert URIs to multiaddrs', () => {
-    const data = [
+    const data: Array<[string, string, MultiaddrFromUriOpts?]> = [
       ['/ip4/127.0.0.1/tcp/80/http', 'http://127.0.0.1'],
       ['/ip6/fc00::/tcp/80/http', 'http://[fc00::]'],
       ['/ip4/0.0.7.6/tcp/1234', 'tcp://0.0.7.6:1234'],
@@ -13,28 +13,128 @@ describe('uri-to-multiaddr', () => {
       ['/ip6/::/tcp/0', 'tcp://[::]:0'],
       ['/ip4/0.0.7.6/udp/1234', 'udp://0.0.7.6:1234'],
       ['/ip6/::/udp/0', 'udp://[::]:0'],
-      ['/dns4/protocol.ai/tcp/80', 'tcp://protocol.ai:80'],
-      ['/dns4/protocol.ai/tcp/80/http', 'http://protocol.ai:80'],
-      ['/dns4/protocol.ai/tcp/80/https', 'https://protocol.ai:80'],
-      ['/dns4/ipfs.io/tcp/80/ws', 'ws://ipfs.io'],
-      ['/dns4/ipfs.io/tcp/443/wss', 'wss://ipfs.io'],
-      ['/dns4/ipfs.io/tcp/80/http', 'http://ipfs.io'],
-      ['/dns4/ipfs.io/tcp/443/https', 'https://ipfs.io'],
-      ['/dns4/ipfs.io/tcp/443/https', 'https://ipfs.io:443'],
-      ['/dns4/ipfs.io/tcp/443', 'tcp://ipfs.io:443'],
-      ['/dns4/ipfs.io/tcp/80', 'tcp://ipfs.io:80'],
+      ['/dns/protocol.ai/tcp/80', 'tcp://protocol.ai:80'],
+      ['/dns4/protocol.ai/tcp/80', 'tcp://protocol.ai:80', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/protocol.ai/tcp/80', 'tcp://protocol.ai:80', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/protocol.ai/tcp/80', 'tcp://protocol.ai:80', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/protocol.ai/tcp/80/http', 'http://protocol.ai:80'],
+      ['/dns4/protocol.ai/tcp/80/http', 'http://protocol.ai:80', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/protocol.ai/tcp/80/http', 'http://protocol.ai:80', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/protocol.ai/tcp/80/http', 'http://protocol.ai:80', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/protocol.ai/tcp/80/https', 'https://protocol.ai:80'],
+      ['/dns4/protocol.ai/tcp/80/https', 'https://protocol.ai:80', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/protocol.ai/tcp/80/https', 'https://protocol.ai:80', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/protocol.ai/tcp/80/https', 'https://protocol.ai:80', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/80/ws', 'ws://ipfs.io'],
+      ['/dns4/ipfs.io/tcp/80/ws', 'ws://ipfs.io', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/80/ws', 'ws://ipfs.io', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/80/ws', 'ws://ipfs.io', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/443/wss', 'wss://ipfs.io'],
+      ['/dns4/ipfs.io/tcp/443/wss', 'wss://ipfs.io', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/443/wss', 'wss://ipfs.io', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/443/wss', 'wss://ipfs.io', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/80/http', 'http://ipfs.io'],
+      ['/dns4/ipfs.io/tcp/80/http', 'http://ipfs.io', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/80/http', 'http://ipfs.io', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/80/http', 'http://ipfs.io', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/443/https', 'https://ipfs.io'],
+      ['/dns4/ipfs.io/tcp/443/https', 'https://ipfs.io', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/443/https', 'https://ipfs.io', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/443/https', 'https://ipfs.io', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/443/https', 'https://ipfs.io:443'],
+      ['/dns4/ipfs.io/tcp/443/https', 'https://ipfs.io:443', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/443/https', 'https://ipfs.io:443', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/443/https', 'https://ipfs.io:443', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/443', 'tcp://ipfs.io:443'],
+      ['/dns4/ipfs.io/tcp/443', 'tcp://ipfs.io:443', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/443', 'tcp://ipfs.io:443', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/443', 'tcp://ipfs.io:443', {
+        defaultDnsType: 'dnsaddr'
+      }],
+      ['/dns/ipfs.io/tcp/80', 'tcp://ipfs.io:80'],
+      ['/dns4/ipfs.io/tcp/80', 'tcp://ipfs.io:80', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/ipfs.io/tcp/80', 'tcp://ipfs.io:80', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/ipfs.io/tcp/80', 'tcp://ipfs.io:80', {
+        defaultDnsType: 'dnsaddr'
+      }],
       ['/ip4/1.2.3.4/tcp/3456/ws', 'ws://1.2.3.4:3456'],
       ['/ip4/1.2.3.4/tcp/3456/wss', 'wss://1.2.3.4:3456'],
       ['/ip6/::/tcp/0/ws', 'ws://[::]:0'],
       ['/ip4/1.2.3.4/tcp/3456/wss', 'wss://1.2.3.4:3456'],
       ['/ip6/::/tcp/0/wss', 'wss://[::]:0'],
-      ['/dns4/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo']
+      ['/dns/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo'],
+      ['/dns4/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo', {
+        defaultDnsType: 'dns4'
+      }],
+      ['/dns6/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo', {
+        defaultDnsType: 'dns6'
+      }],
+      ['/dnsaddr/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo', {
+        defaultDnsType: 'dnsaddr'
+      }]
     ]
 
     data.forEach(d => {
       const input = d[1]
       const expected = d[0]
-      const output = uriToMultiaddr(input).toString()
+      const opts = d[2]
+      const output = uriToMultiaddr(input, opts).toString()
       expect(output).to.equal(expected, `Converts ${input} to ${expected}`)
     })
   })
