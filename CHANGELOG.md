@@ -1,3 +1,9 @@
+## [9.0.1](https://github.com/multiformats/js-uri-to-multiaddr/compare/v9.0.0...v9.0.1) (2025-03-26)
+
+### Bug Fixes
+
+* prefer /tls/http to /https and /tls/ws to /wss ([#56](https://github.com/multiformats/js-uri-to-multiaddr/issues/56)) ([8293d85](https://github.com/multiformats/js-uri-to-multiaddr/commit/8293d85e7c2fbd1d7a3c1d4e1278193a4875b601)), closes [#6](https://github.com/multiformats/js-uri-to-multiaddr/issues/6)
+
 ## [9.0.0](https://github.com/multiformats/js-uri-to-multiaddr/compare/v8.1.0...v9.0.0) (2025-03-26)
 
 ### ⚠ BREAKING CHANGES
