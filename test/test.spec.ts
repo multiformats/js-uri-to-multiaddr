@@ -27,7 +27,8 @@ describe('uri-to-multiaddr', () => {
       ['/ip4/1.2.3.4/tcp/3456/wss', 'wss://1.2.3.4:3456'],
       ['/ip6/::/tcp/0/ws', 'ws://[::]:0'],
       ['/ip4/1.2.3.4/tcp/3456/wss', 'wss://1.2.3.4:3456'],
-      ['/ip6/::/tcp/0/wss', 'wss://[::]:0']
+      ['/ip6/::/tcp/0/wss', 'wss://[::]:0'],
+      ['/dns4/example.com/tcp/443/wss/http-path/foo', 'wss://example.com:443/foo']
     ]
 
     data.forEach(d => {
