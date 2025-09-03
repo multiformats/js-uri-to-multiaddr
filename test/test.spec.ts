@@ -161,6 +161,6 @@ describe('uri-to-multiaddr', () => {
     expect(() => {
       // NOTE: `data` is a valid uri protocol but isn't a valid multiaddr protocol yet
       uriToMultiaddr('data:image/svg+xml;base64,test')
-    }).to.throw('no protocol with name: data')
+    }).to.throw('Protocol data was unknown')
   })
 })
