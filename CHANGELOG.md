@@ -1,3 +1,9 @@
+## [9.0.2](https://github.com/multiformats/js-uri-to-multiaddr/compare/v9.0.1...v9.0.2) (2025-09-03)
+
+### Dependencies
+
+* **dev:** bump aegir from 45.1.4 to 47.0.21 ([#77](https://github.com/multiformats/js-uri-to-multiaddr/issues/77)) ([9088b40](https://github.com/multiformats/js-uri-to-multiaddr/commit/9088b400b6a19166573b1988c482c1afd8a706cd))
+
 ## [9.0.1](https://github.com/multiformats/js-uri-to-multiaddr/compare/v9.0.0...v9.0.1) (2025-03-26)
 
 ### Bug Fixes
