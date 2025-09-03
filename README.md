@@ -66,7 +66,7 @@ $ npm i @multiformats/uri-to-multiaddr
 
 ## Browser `<script>` tag
 
-Loading this module through a script tag will make it's exports available as `MultiformatsUriToMultiaddr` in the global namespace.
+Loading this module through a script tag will make its exports available as `MultiformatsUriToMultiaddr` in the global namespace.
 
 ```html
 <script src="https://unpkg.com/@multiformats/uri-to-multiaddr/dist/index.min.js"></script>
@@ -80,8 +80,8 @@ Loading this module through a script tag will make it's exports available as `Mu
 
 Licensed under either of
 
-- Apache 2.0, ([LICENSE-APACHE](LICENSE-APACHE) / <http://www.apache.org/licenses/LICENSE-2.0>)
-- MIT ([LICENSE-MIT](LICENSE-MIT) / <http://opensource.org/licenses/MIT>)
+- Apache 2.0, ([LICENSE-APACHE](https://github.com/multiformats/js-uri-to-multiaddr/LICENSE-APACHE) / <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT ([LICENSE-MIT](https://github.com/multiformats/js-uri-to-multiaddr/LICENSE-MIT) / <http://opensource.org/licenses/MIT>)
 
 # Contribution
 
