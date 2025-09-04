@@ -141,7 +141,7 @@
     "release": "aegir release"
   },
   "dependencies": {
-    "@multiformats/multiaddr": "^12.1.14",
+    "@multiformats/multiaddr": "^13.0.0",
     "is-ip": "^5.0.0"
   },
   "devDependencies": {
